@@ -1,35 +1,84 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+
+import "./App.css";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import About from "../About/About";
+import Footer from "../Footer/Footer";
+
+import { getArticles } from "../../utils/api";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+    _id: "",
+    __v: "",
+  });
+  const [isLoading, setIsLodaing] = useState(false);
+  const [isActiveSearch, setIsActiveSearch] = useState(true);
+  const [activeModal, setActiveModal] = useState("");
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    getArticles()
+      .then((data) => {
+        setArticles(data);
+      })
+      .catch(console.error);
+  }, []);
+
+  //For later
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt");
+  //   if (token) {
+  //     checkToken(token)
+  //       .then((res) => {
+  //         setIsLoggedIn(true);
+  //         setCurrentUser(res);
+  //       })
+  //       .catch(console.error);
+  //   }
+  // }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    const handleClickOutsideClose = (evt) => {
+      if (evt.target.classList.contains("modal")) {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleClickOutsideClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("click", handleClickOutsideClose);
+    };
+  }, [activeModal]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className="App__content">
+        <Header isLoggedIn={isLoggedIn} />
+
+        {isActiveSearch ? <Main articles={articles} /> : <></>}
+
+        <About />
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

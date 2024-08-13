@@ -1,0 +1,40 @@
+.navigation {
+  display: flex;
+  margin: 0 auto;
+  height: 80px;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navigation__title {
+  margin: 0 auto 0 0;
+  padding-left: 104px;
+  color: #fff;
+  font-family: "Roboto-Bold", "sans-serif";
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.navigation__title:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+.navigation__links {
+  display: flex;
+  padding-right: 104px;
+  align-items: center;
+  color: #fff;
+  font-family: "Roboto-Medium", "sans-serif";
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.navigation__link {
+}
+
+.navigation__link:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
