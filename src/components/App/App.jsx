@@ -72,7 +72,11 @@ function App() {
       <div className="App__content">
         <Header isLoggedIn={isLoggedIn} />
 
-        {isActiveSearch ? <Main articles={articles} /> : <></>}
+        {isActiveSearch ? (
+          <Main articles={articles} isLoggedIn={isLoggedIn} />
+        ) : (
+          <></>
+        )}
 
         <About />
         <Footer />
