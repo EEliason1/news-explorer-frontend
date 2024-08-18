@@ -1,0 +1,22 @@
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter-Regular", "sans-serif";
+  font-size: 12px;
+  line-height: 1.25;
+  margin: 0 0 31px;
+  padding: 0;
+  color: #2f71e5;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 9px 0;
+  color: #000;
+}
+
+.modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+

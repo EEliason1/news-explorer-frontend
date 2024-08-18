@@ -8,10 +8,19 @@
   position: relative;
 }
 
-.card__save-icon {
+.card__save {
   position: absolute;
+  display: flex;
   top: 24px;
   right: 24px;
+  width: 40px;
+  height: 40px;
+}
+
+.card__save-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
   background-image: url("../../assets/save-icon-normal.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -23,9 +32,12 @@
 
 .card__signin-button {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 45px;
   margin: 0 auto;
-  padding: 11px 20px;
+  padding: 0;
   background-color: #fff;
   border: none;
   font-family: "Roboto-Regular", "sans-serif";
@@ -34,17 +46,28 @@
   line-height: 1.17;
   color: #000;
   border-radius: 8px;
+  opacity: 0;
   width: 182px;
   height: 40px;
-  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
 }
 
-.card__save-icon:hover {
+.card__save:hover {
+  width: 227px;
+}
+
+.card__save_logged-in:hover {
+  width: 40px;
+}
+
+.card__save:hover .card__save-icon {
   background-image: url("../../assets/save-icon-hover.svg");
   cursor: url("../../assets/custom-cursor.svg"), pointer;
 }
 
-.card__save-icon:hover .card__signin-button {
+.card__save:hover .card__signin-button {
+  pointer-events: all;
   opacity: 1;
 }
 

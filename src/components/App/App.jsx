@@ -1,26 +1,74 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import About from "../About/About";
+import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 
+import SignInModal from "../SignInModal/SignInModal";
+import SignUpModal from "../SignUpModal/SignUpModal";
+import SignUpConfirmModal from "../SignUpConfirmModal/SignUpConfirmModal";
+
 import { getArticles } from "../../utils/api";
+import { signin, signup, checktoken } from "../../utils/auth";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
-    name: "",
+    username: "",
     email: "",
-    avatar: "",
     _id: "",
     __v: "",
   });
-  const [isLoading, setIsLodaing] = useState(false);
-  const [isActiveSearch, setIsActiveSearch] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [articles, setArticles] = useState([]);
+
+  const openModal = (modal) => {
+    setActiveModal(modal);
+  };
+
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
+  const handleSignInClick = () => {
+    openModal("sign-in");
+  };
+
+  const handleSignUpClick = () => {
+    openModal("sign-up");
+  };
+
+  const handleSignIn = (userInfo) => {
+    setIsLoading(true);
+    signin(userInfo)
+      .then((res) => {
+        // localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        closeActiveModal();
+      })
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const handleSignUp = (newUserInfo) => {
+    setIsLoading(true);
+    signup(newUserInfo)
+      .then(() => {
+        closeActiveModal();
+        openModal("sign-up-confirm");
+      })
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   useEffect(() => {
     getArticles()
@@ -70,16 +118,42 @@ function App() {
   return (
     <div className="App">
       <div className="App__content">
-        <Header isLoggedIn={isLoggedIn} />
+        <Header isLoggedIn={isLoggedIn} handleSignInClick={handleSignInClick} />
 
-        {isActiveSearch ? (
-          <Main articles={articles} isLoggedIn={isLoggedIn} />
-        ) : (
-          <></>
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                articles={articles}
+                isLoggedIn={isLoggedIn}
+                isLoading={isLoading}
+                isActiveSearch={isActiveSearch}
+              />
+            }
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
 
-        <About />
         <Footer />
+
+        <SignInModal
+          isOpen={activeModal === "sign-in"}
+          handleSignUpClick={handleSignUpClick}
+          handleCloseClick={closeActiveModal}
+          onSignIn={handleSignIn}
+        />
+        <SignUpModal
+          isOpen={activeModal === "sign-up"}
+          handleSignInClick={handleSignInClick}
+          handleCloseClick={closeActiveModal}
+          onSignUp={handleSignUp}
+        />
+        <SignUpConfirmModal
+          isOpen={activeModal === "sign-up-confirm"}
+          handleSignInClick={handleSignInClick}
+          handleCloseClick={closeActiveModal}
+        />
       </div>
     </div>
   );

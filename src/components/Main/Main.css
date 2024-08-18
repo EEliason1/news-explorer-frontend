@@ -1,4 +1,27 @@
 .main {
+}
+
+.main__searching {
+  margin: 0 auto;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.main__search-text {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Roboto-Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #b6bcbf;
+}
+
+.main__content {
   padding-bottom: 80px;
 }
 

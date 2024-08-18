@@ -1,8 +1,12 @@
 import "./NavigationLoggedOut.css";
 
-function NavigationLoggedOut() {
+function NavigationLoggedOut({ handleSignInClick }) {
   return (
-    <button className="navigation__sign-in-button" type="button">
+    <button
+      className="navigation__sign-in-button"
+      type="button"
+      onClick={handleSignInClick}
+    >
       Sign In
     </button>
   );
