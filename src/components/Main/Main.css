@@ -33,15 +33,3 @@
   font-size: 40px;
   line-height: 1.15;
 }
-
-.cards {
-}
-
-.cards__list {
-  list-style: none;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding: 64px 0 0 104px;
-}

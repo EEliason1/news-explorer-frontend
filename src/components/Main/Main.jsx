@@ -1,9 +1,16 @@
 import "./Main.css";
-import ArticleCard from "../ArticleCard/ArticleCard";
 import Preloader from "../Preloader/Preloader";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import About from "../About/About";
 
-function Main({ articles, isLoggedIn, isLoading, isActiveSearch }) {
+function Main({
+  articles,
+  isLoggedIn,
+  isLoading,
+  isActiveSearch,
+  handleSignInClick,
+  handleSaveClick,
+}) {
   return (
     <main className="main">
       {isActiveSearch ? (
@@ -16,19 +23,12 @@ function Main({ articles, isLoggedIn, isLoading, isActiveSearch }) {
           ) : (
             <div className="main__content">
               <h2 className="main__title">Search Results</h2>
-              <section className="cards">
-                <ul className="cards__list">
-                  {articles?.map((article) => {
-                    return (
-                      <ArticleCard
-                        key={article._id}
-                        article={article}
-                        isLoggedIn={isLoggedIn}
-                      />
-                    );
-                  })}
-                </ul>
-              </section>
+              <NewsCardList
+                articles={articles}
+                isLoggedIn={isLoggedIn}
+                handleSignInClick={handleSignInClick}
+                handleSaveClick={handleSaveClick}
+              />
             </div>
           )}
         </div>

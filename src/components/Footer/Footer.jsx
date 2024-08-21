@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 import githubIcon from "../../assets/github-icon.svg";
 import facebookIcon from "../../assets/facebook-icon.svg";
@@ -11,7 +12,9 @@ function Footer() {
       </h2>
       <div className="footer__links">
         <div className="footer__text">
-          <p className="footer__link footer__link_text">Home</p>
+          <Link to="/" className="react__link">
+            <p className="footer__link footer__link_text">Home</p>
+          </Link>
           <p className="footer__link footer__link_text">TripleTen</p>
         </div>
         <div className="footer__icons">

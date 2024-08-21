@@ -4,8 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Profile from "../Profile/Profile";
+import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import SignInModal from "../SignInModal/SignInModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
@@ -14,16 +15,18 @@ import SignUpConfirmModal from "../SignUpConfirmModal/SignUpConfirmModal";
 import { getArticles } from "../../utils/api";
 import { signin, signup, checktoken } from "../../utils/auth";
 
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
-    username: "",
+    username: "Testing",
     email: "",
     _id: "",
     __v: "",
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isActiveSearch, setIsActiveSearch] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isActiveSearch, setIsActiveSearch] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [articles, setArticles] = useState([]);
 
@@ -47,7 +50,7 @@ function App() {
     setIsLoading(true);
     signin(userInfo)
       .then((res) => {
-        // localStorage.setItem("jwt", res.token);
+        localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         closeActiveModal();
       })
@@ -70,6 +73,19 @@ function App() {
       });
   };
 
+  const handleSignOutClick = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+  };
+
+  const handleSaveClick = (article) => {
+    console.log(article);
+  };
+
+  const handleDeleteClick = (article) => {
+    console.log(article);
+  };
+
   useEffect(() => {
     getArticles()
       .then((data) => {
@@ -78,18 +94,17 @@ function App() {
       .catch(console.error);
   }, []);
 
-  //For later
-  // useEffect(() => {
-  //   const token = localStorage.getItem("jwt");
-  //   if (token) {
-  //     checkToken(token)
-  //       .then((res) => {
-  //         setIsLoggedIn(true);
-  //         setCurrentUser(res);
-  //       })
-  //       .catch(console.error);
-  //   }
-  // }, [isLoggedIn]);
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checktoken(token)
+        .then((res) => {
+          setIsLoggedIn(true);
+          // setCurrentUser(res);
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -116,46 +131,68 @@ function App() {
   }, [activeModal]);
 
   return (
-    <div className="App">
-      <div className="App__content">
-        <Header isLoggedIn={isLoggedIn} handleSignInClick={handleSignInClick} />
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
+        <div className="App__content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div>
+                  <Header
+                    isLoggedIn={isLoggedIn}
+                    handleSignInClick={handleSignInClick}
+                    handleSignOutClick={handleSignOutClick}
+                  />
+                  <Main
+                    articles={articles}
+                    isLoggedIn={isLoggedIn}
+                    isLoading={isLoading}
+                    isActiveSearch={isActiveSearch}
+                    handleSignInClick={handleSignInClick}
+                    handleSaveClick={handleSaveClick}
+                  />
+                </div>
+              }
+            />
+            <Route
+              path="/saved-news"
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedNews
+                    isLoggedIn={isLoggedIn}
+                    articles={articles}
+                    handleSignInClick={handleSignInClick}
+                    handleSignOutClick={handleSignOutClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                articles={articles}
-                isLoggedIn={isLoggedIn}
-                isLoading={isLoading}
-                isActiveSearch={isActiveSearch}
-              />
-            }
+          <Footer />
+
+          <SignInModal
+            isOpen={activeModal === "sign-in"}
+            handleSignUpClick={handleSignUpClick}
+            handleCloseClick={closeActiveModal}
+            onSignIn={handleSignIn}
           />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-
-        <Footer />
-
-        <SignInModal
-          isOpen={activeModal === "sign-in"}
-          handleSignUpClick={handleSignUpClick}
-          handleCloseClick={closeActiveModal}
-          onSignIn={handleSignIn}
-        />
-        <SignUpModal
-          isOpen={activeModal === "sign-up"}
-          handleSignInClick={handleSignInClick}
-          handleCloseClick={closeActiveModal}
-          onSignUp={handleSignUp}
-        />
-        <SignUpConfirmModal
-          isOpen={activeModal === "sign-up-confirm"}
-          handleSignInClick={handleSignInClick}
-          handleCloseClick={closeActiveModal}
-        />
+          <SignUpModal
+            isOpen={activeModal === "sign-up"}
+            handleSignInClick={handleSignInClick}
+            handleCloseClick={closeActiveModal}
+            onSignUp={handleSignUp}
+          />
+          <SignUpConfirmModal
+            isOpen={activeModal === "sign-up-confirm"}
+            handleSignInClick={handleSignInClick}
+            handleCloseClick={closeActiveModal}
+          />
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 

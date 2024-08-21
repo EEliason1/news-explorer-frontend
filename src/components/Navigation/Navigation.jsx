@@ -1,18 +1,35 @@
 import "./Navigation.css";
 import NavigationLoggedIn from "../NavigationLoggedIn/NavigationLoggedIn";
 import NavigationLoggedOut from "../NavigationLoggedOut/NavigationLoggedOut";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-function Navigation({ isLoggedIn, handleSignInClick }) {
+function Navigation({ isLoggedIn, handleSignInClick, handleSignOutClick }) {
+  const { pathname } = useLocation();
+
   return (
-    <div className="navigation">
-      <Link to="/" className="navigation__link">
-        <div className="navigation__title">NewsExplorer</div>
+    <div className={`navigation ${pathname === "/saved-news" && "saved-news"}`}>
+      <Link to="/" className="react__link">
+        <div
+          className={`navigation__title ${
+            pathname === "/saved-news" && "saved-news"
+          }`}
+        >
+          NewsExplorer
+        </div>
       </Link>
       <div className="navigation__links">
-        <div className="navigation__link">Home</div>
+        <Link to="/" className="react__link">
+          <button
+            className={`navigation__link ${
+              pathname === "/" ? "home" : "saved-news"
+            }`}
+            type="button"
+          >
+            Home
+          </button>
+        </Link>
         {isLoggedIn ? (
-          <NavigationLoggedIn />
+          <NavigationLoggedIn handleSignOutClick={handleSignOutClick} />
         ) : (
           <NavigationLoggedOut handleSignInClick={handleSignInClick} />
         )}

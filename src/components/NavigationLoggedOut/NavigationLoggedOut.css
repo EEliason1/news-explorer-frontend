@@ -1,6 +1,4 @@
-.navigation__sign-in-button {
-  margin: 0 0 0 42px;
-  width: 176px;
+.navigation__button {
   height: 48px;
   color: #fff;
   background-color: transparent;
@@ -8,7 +6,11 @@
   border-radius: 48px;
 }
 
-.navigation__sign-in-button:hover {
+.navigation__button:hover {
   cursor: url("../../assets/custom-cursor.svg"), pointer;
   opacity: 0.6;
+}
+
+.navigation__button_sign-in {
+  width: 176px;
 }
