@@ -2,15 +2,23 @@ import "./Main.css";
 import Preloader from "../Preloader/Preloader";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import About from "../About/About";
+import { useState } from "react";
 
 function Main({
   articles,
+  savedNews,
   isLoggedIn,
   isLoading,
   isActiveSearch,
   handleSignInClick,
   handleSaveClick,
 }) {
+  const [visibleResults, setVisibleResults] = useState(3);
+
+  const showMore = () => {
+    setVisibleResults(visibleResults + 3);
+  };
+
   return (
     <main className="main">
       {isActiveSearch ? (
@@ -28,7 +36,20 @@ function Main({
                 isLoggedIn={isLoggedIn}
                 handleSignInClick={handleSignInClick}
                 handleSaveClick={handleSaveClick}
+                visibleResults={visibleResults}
+                savedNews={savedNews}
               />
+              {articles.length > visibleResults ? (
+                <button
+                  className="main__show-more-button"
+                  type="button"
+                  onClick={showMore}
+                >
+                  Show more
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
           )}
         </div>

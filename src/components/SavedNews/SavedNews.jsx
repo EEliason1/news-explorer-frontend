@@ -15,6 +15,7 @@ function SavedNews({
         <SavedNewsHeader
           isLoggedIn={isLoggedIn}
           handleSignOutClick={handleSignOutClick}
+          articles={articles}
         />
         <NewsCardList
           articles={articles}

@@ -29,6 +29,7 @@ function App() {
   const [isActiveSearch, setIsActiveSearch] = useState(true);
   const [activeModal, setActiveModal] = useState("");
   const [articles, setArticles] = useState([]);
+  const [savedNews, setSavedNews] = useState([]);
 
   const openModal = (modal) => {
     setActiveModal(modal);
@@ -78,12 +79,14 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  const handleSaveClick = (article) => {
-    console.log(article);
+  const handleSaveClick = (newsArticle) => {
+    setSavedNews([...savedNews, newsArticle]);
   };
 
-  const handleDeleteClick = (article) => {
-    console.log(article);
+  const handleDeleteClick = (newsArticle) => {
+    setSavedNews(
+      savedNews.filter((article) => article.url !== newsArticle.url)
+    );
   };
 
   useEffect(() => {
@@ -146,6 +149,7 @@ function App() {
                   />
                   <Main
                     articles={articles}
+                    savedNews={savedNews}
                     isLoggedIn={isLoggedIn}
                     isLoading={isLoading}
                     isActiveSearch={isActiveSearch}
@@ -161,7 +165,7 @@ function App() {
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <SavedNews
                     isLoggedIn={isLoggedIn}
-                    articles={articles}
+                    articles={savedNews}
                     handleSignInClick={handleSignInClick}
                     handleSignOutClick={handleSignOutClick}
                     handleDeleteClick={handleDeleteClick}

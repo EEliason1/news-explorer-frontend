@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.card:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+}
+
 .card__keyword {
   position: absolute;
   top: 24px;
@@ -55,6 +59,10 @@
   background-image: url("../../assets/trash-normal.svg");
 }
 
+.card__save-icon.saved {
+  background-image: url("../../assets/save-icon-marked.svg");
+}
+
 .card__signin-button {
   position: absolute;
   display: flex;
@@ -73,6 +81,29 @@
   border-radius: 8px;
   opacity: 0;
   width: 182px;
+  height: 40px;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.card__delete-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 45px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  font-family: "Roboto-Bold", "sans-serif";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #000;
+  border-radius: 8px;
+  opacity: 0;
+  width: 159px;
   height: 40px;
   transition: opacity 0.2s ease-in-out;
   pointer-events: none;
@@ -101,7 +132,16 @@
   opacity: 1;
 }
 
+.card__save:hover .card__delete-button {
+  pointer-events: all;
+  opacity: 1;
+}
+
 .card__signin-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+}
+
+.card__delete-button:hover {
   cursor: url("../../assets/custom-cursor.svg"), pointer;
 }
 

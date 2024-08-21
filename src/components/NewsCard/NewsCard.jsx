@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 function NewsCard({
   article,
+  savedNews,
   isLoggedIn,
   handleSignInClick,
   handleSaveClick,
@@ -18,6 +19,8 @@ function NewsCard({
     handleDeleteClick(article);
   };
 
+  const isSaved = savedNews?.some((savedArticle) => savedArticle === article);
+
   return (
     <li className="card">
       <div
@@ -31,7 +34,7 @@ function NewsCard({
         >
           {pathname === "/saved-news" ? (
             <button
-              className="card__signin-button"
+              className="card__delete-button"
               type="button"
               onClick={handleDelete}
             >
@@ -42,8 +45,8 @@ function NewsCard({
           )}
           <button
             className={`card__save-icon ${
-              pathname === "/saved-news" && "delete"
-            }`}
+              isSaved && pathname === "/" && "saved"
+            } ${pathname === "/saved-news" && "delete"}`}
             type="button"
             onClick={pathname === "/" ? handleSave : handleDelete}
           ></button>
