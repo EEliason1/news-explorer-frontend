@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
 
 import SignInModal from "../SignInModal/SignInModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
@@ -14,6 +15,7 @@ import SignUpConfirmModal from "../SignUpConfirmModal/SignUpConfirmModal";
 
 import { getArticles } from "../../utils/api";
 import { signin, signup, checktoken } from "../../utils/auth";
+import { apiKey } from "../../utils/constants";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -26,7 +28,7 @@ function App() {
     __v: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [isActiveSearch, setIsActiveSearch] = useState(true);
+  const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [activeModal, setActiveModal] = useState("");
   const [articles, setArticles] = useState([]);
   const [savedNews, setSavedNews] = useState([]);
@@ -89,13 +91,26 @@ function App() {
     );
   };
 
-  useEffect(() => {
-    getArticles()
-      .then((data) => {
-        setArticles(data);
-      })
-      .catch(console.error);
-  }, []);
+  const handleSearchSubmit = (q) => {
+    if (q) {
+      const from = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
+      const to = new Date(Date.now()).toISOString();
+      const pageSize = 100;
+      setIsLoading(true);
+      getArticles({ q, from, to, pageSize }, apiKey)
+        .then((data) => {
+          setIsActiveSearch(true);
+          for (let i = 0; i < pageSize; i++) {
+            data.articles[i].q = q;
+          }
+          setArticles(data.articles);
+        })
+        .catch(console.error)
+        .finally(setIsLoading(false));
+    } else {
+      console.log("Must enter keyword");
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -146,16 +161,21 @@ function App() {
                     isLoggedIn={isLoggedIn}
                     handleSignInClick={handleSignInClick}
                     handleSignOutClick={handleSignOutClick}
+                    handleSearchSubmit={handleSearchSubmit}
                   />
-                  <Main
-                    articles={articles}
-                    savedNews={savedNews}
-                    isLoggedIn={isLoggedIn}
-                    isLoading={isLoading}
-                    isActiveSearch={isActiveSearch}
-                    handleSignInClick={handleSignInClick}
-                    handleSaveClick={handleSaveClick}
-                  />
+                  {isLoading ? (
+                    <Preloader />
+                  ) : (
+                    <Main
+                      articles={articles}
+                      savedNews={savedNews}
+                      isLoggedIn={isLoggedIn}
+                      isLoading={isLoading}
+                      isActiveSearch={isActiveSearch}
+                      handleSignInClick={handleSignInClick}
+                      handleSaveClick={handleSaveClick}
+                    />
+                  )}
                 </div>
               }
             />

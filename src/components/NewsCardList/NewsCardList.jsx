@@ -16,7 +16,7 @@ function NewsCardList({
         {articles?.slice(0, visibleResults).map((article) => {
           return (
             <NewsCard
-              key={article._id}
+              key={article.publishedAt}
               article={article}
               isLoggedIn={isLoggedIn}
               handleSignInClick={handleSignInClick}

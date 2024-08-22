@@ -2,7 +2,12 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Header({ isLoggedIn, handleSignInClick, handleSignOutClick }) {
+function Header({
+  isLoggedIn,
+  handleSignInClick,
+  handleSignOutClick,
+  handleSearchSubmit,
+}) {
   return (
     <header className="header">
       <Navigation
@@ -16,7 +21,7 @@ function Header({ isLoggedIn, handleSignInClick, handleSignOutClick }) {
           Find the latest news on any topic and save them in your personal
           account.
         </h2>
-        <SearchForm />
+        <SearchForm handleSearchSubmit={handleSearchSubmit} />
       </div>
     </header>
   );

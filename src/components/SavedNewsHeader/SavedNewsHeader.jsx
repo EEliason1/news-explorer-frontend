@@ -8,7 +8,7 @@ function SavedNewsHeader({ isLoggedIn, handleSignOutClick, articles }) {
   const keywords = [];
 
   for (let i = 0; i < articles.length; i++) {
-    keywords.push(articles[i].keyword);
+    keywords.push(articles[i].q);
   }
 
   const uniqueKeywords = Array.from(new Set(keywords));

@@ -18,7 +18,7 @@ function ModalWithForm({
         <h2 className="modal__title">{titleText}</h2>
         {children}
         <div className="modal__submit-buttons">
-          <button className="modal__submit-button modal__submit-button_disabled" type="submit">
+          <button className="modal__submit-button" type="submit">
             {buttonText}
           </button>
 

@@ -68,7 +68,7 @@ function SignUpModal({
           required
         />
       </label>
-      <label htmlFor="uesrname" className="modal__label">
+      <label htmlFor="username" className="modal__label">
         Username
         <input
           type="text"

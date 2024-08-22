@@ -1,4 +1,4 @@
-export const APIkey = ``;
+export const apiKey = `4faa1479c0234b40a5cf9ab900eef9cc`;
 
 //more relevant data will be used once api is implemented
 import sitSpotImage from "../assets/prelim-article-images/sit-spot-image.svg";

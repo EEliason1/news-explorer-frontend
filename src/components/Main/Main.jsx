@@ -29,26 +29,38 @@ function Main({
               <h3 className="main__search-text">Searching for news...</h3>
             </div>
           ) : (
-            <div className="main__content">
-              <h2 className="main__title">Search Results</h2>
-              <NewsCardList
-                articles={articles}
-                isLoggedIn={isLoggedIn}
-                handleSignInClick={handleSignInClick}
-                handleSaveClick={handleSaveClick}
-                visibleResults={visibleResults}
-                savedNews={savedNews}
-              />
-              {articles.length > visibleResults ? (
-                <button
-                  className="main__show-more-button"
-                  type="button"
-                  onClick={showMore}
-                >
-                  Show more
-                </button>
+            <div>
+              {articles.length === 0 ? (
+                <div className="main__nothing-found">
+                  <div className="main__nothing-image"></div>
+                  <h2 className="main__nothing-title">Nothing found</h2>
+                  <p className="main__nothing-text">
+                    Sorry, but nothing matched your search terms.
+                  </p>
+                </div>
               ) : (
-                <></>
+                <div className="main__content">
+                  <h2 className="main__title">Search Results</h2>
+                  <NewsCardList
+                    articles={articles}
+                    isLoggedIn={isLoggedIn}
+                    handleSignInClick={handleSignInClick}
+                    handleSaveClick={handleSaveClick}
+                    visibleResults={visibleResults}
+                    savedNews={savedNews}
+                  />
+                  {articles.length > visibleResults ? (
+                    <button
+                      className="main__show-more-button"
+                      type="button"
+                      onClick={showMore}
+                    >
+                      Show more
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               )}
             </div>
           )}

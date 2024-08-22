@@ -1,9 +1,13 @@
 import { prelimArticles } from "./constants";
+import { request } from "./utils";
 
-function getArticles() {
-  return new Promise((resolve, reject) => {
-    resolve(prelimArticles);
-  });
+const baseURL =
+  "https://newsapi.org/v2/top-headlines?country=us&apiKey=[your_key]";
+
+function getArticles({ q, from, to, pageSize }, apiKey) {
+  return request(
+    `https://newsapi.org/v2/everything?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${apiKey}`
+  );
 }
 
 function saveArticle(article) {
@@ -13,9 +17,9 @@ function saveArticle(article) {
 }
 
 function deleteArticle(article) {
-    return new Promise((resolve, reject) => {
-        resolve(article);
-      });
+  return new Promise((resolve, reject) => {
+    resolve(article);
+  });
 }
 
-export { getArticles, saveArticle, deleteArticle}
+export { getArticles, saveArticle, deleteArticle };

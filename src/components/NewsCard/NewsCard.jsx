@@ -20,13 +20,14 @@ function NewsCard({
   };
 
   const isSaved = savedNews?.some((savedArticle) => savedArticle === article);
+  const publishDate = article?.publishedAt;
 
   return (
     <li className="card">
       <div
         className={`card__keyword ${pathname === "/saved-news" && "visible"}`}
       >
-        {article.keyword}
+        {article.q}
       </div>
       {isLoggedIn ? (
         <div
@@ -63,13 +64,19 @@ function NewsCard({
           <button className="card__save-icon" type="button"></button>
         </div>
       )}
-      <img src={article.image} alt={article.title} className="card__image" />
-      <div className="card__content">
-        <h3 className="card__date">{article.publishDate}</h3>
-        <h2 className="card__title">{article.title}</h2>
-        <p className="card__body">{article.body}</p>
-        <h3 className="card__publisher">{article.publisher}</h3>
-      </div>
+      <a href={article.url} target="_blank" className="card__link">
+        <img
+          src={article.urlToImage}
+          alt={article.title}
+          className="card__image"
+        />
+        <div className="card__content">
+          <h3 className="card__date">{publishDate}</h3>
+          <h2 className="card__title">{article.title}</h2>
+          <p className="card__body">{article.content}</p>
+          <h3 className="card__publisher">{article.source.name}</h3>
+        </div>
+      </a>
     </li>
   );
 }
