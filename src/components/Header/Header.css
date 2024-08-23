@@ -7,6 +7,7 @@
   background-image: url("../../assets/header-background.svg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .header__content {
@@ -36,4 +37,40 @@
   color: #fff;
   font-size: 18px;
   line-height: 1.33;
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    padding-bottom: 32px;
+  }
+
+  .header__content {
+    max-width: 452px;
+  }
+
+  .header__title {
+    font-size: 36px;
+    line-height: 1.11;
+    padding-top: 38px;
+  }
+
+  .header__subtitle {
+    padding: 16px 0 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__content {
+    max-width: 288px;
+  }
+
+  .header__title {
+    font-size: 36px;
+    line-height: 1.11;
+    padding-top: 30px;
+  }
+
+  .header__subtitle {
+    padding: 16px 0 112px;
+  }
 }

@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  top: 0;
   z-index: 2;
   visibility: hidden;
   opacity: 0;
@@ -25,16 +25,18 @@
 }
 
 .modal_type_sign-up-confirm {
-    visibility: visible;
-    opacity: 1;
-  }
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal_type_hamburger {
+  visibility: visible;
+  opacity: 1;
+}
 
 .modal__content {
-  background-color: #fff;
-  border-radius: 20px;
   padding: 0;
   position: relative;
-  max-width: 430px;
   width: 100%;
   box-sizing: border-box;
 }

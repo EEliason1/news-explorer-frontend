@@ -43,4 +43,45 @@
 
 .search-form__submit-button:hover {
   cursor: url("../../assets/custom-cursor.svg"), pointer;
+  background-color: #1a5ed3cc;
+}
+
+@media screen and (max-width: 800px) {
+  .search-form {
+    max-width: calc(452px - 24px);
+    height: 56px;
+    border-radius: 56px;
+  }
+
+  .search-form__submit-button {
+    height: 56px;
+    border-radius: 56px;
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .search-form {
+    flex-direction: column;
+    height: 128px;
+    background-color: transparent;
+    gap: 0;
+  }
+
+  .modal__label_type_search {
+    background-color: #fff;
+    border-radius: 56px;
+  }
+
+  .search-form__input {
+    padding: 17px 16px;
+    margin: 0;
+    width: 256px;
+  }
+
+  .search-form__submit-button {
+    height: 56px;
+    border-radius: 56px;
+    width: 288px;
+  }
 }

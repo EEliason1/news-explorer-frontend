@@ -3,7 +3,12 @@ import NavigationLoggedIn from "../NavigationLoggedIn/NavigationLoggedIn";
 import NavigationLoggedOut from "../NavigationLoggedOut/NavigationLoggedOut";
 import { Link, useLocation } from "react-router-dom";
 
-function Navigation({ isLoggedIn, handleSignInClick, handleSignOutClick }) {
+function Navigation({
+  isLoggedIn,
+  handleSignInClick,
+  handleSignOutClick,
+  handleHamburgerClick,
+}) {
   const { pathname } = useLocation();
 
   return (
@@ -17,6 +22,13 @@ function Navigation({ isLoggedIn, handleSignInClick, handleSignOutClick }) {
           NewsExplorer
         </div>
       </Link>
+      <button
+        className={`navigation__hamburger ${
+          pathname === "/saved-news" && "saved-news"
+        }`}
+        type="button"
+        onClick={handleHamburgerClick}
+      ></button>
       <div className="navigation__links">
         <Link to="/" className="react__link">
           <button

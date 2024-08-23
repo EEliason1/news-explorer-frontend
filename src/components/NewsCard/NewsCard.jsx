@@ -1,5 +1,6 @@
 import "./NewsCard.css";
 import { useLocation } from "react-router-dom";
+import { months } from "../../utils/constants";
 
 function NewsCard({
   article,
@@ -21,6 +22,13 @@ function NewsCard({
 
   const isSaved = savedNews?.some((savedArticle) => savedArticle === article);
   const publishDate = article?.publishedAt;
+
+  const day = publishDate.slice(8, 10);
+  const monthTemp = publishDate.slice(5, 7);
+  const month = months[monthTemp];
+  const year = publishDate.slice(0, 4);
+
+  const publishDateConverted = `${month} ${day}, ${year}`;
 
   return (
     <li className="card">
@@ -71,7 +79,7 @@ function NewsCard({
           className="card__image"
         />
         <div className="card__content">
-          <h3 className="card__date">{publishDate}</h3>
+          <h3 className="card__date">{publishDateConverted}</h3>
           <h2 className="card__title">{article.title}</h2>
           <p className="card__body">{article.content}</p>
           <h3 className="card__publisher">{article.source.name}</h3>

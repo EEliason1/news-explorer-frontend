@@ -9,3 +9,17 @@
   margin: 0 auto;
   padding: 64px 0 0 104px;
 }
+
+@media screen and (max-width: 800px) {
+  .news-card-list__list {
+    padding: 32px 40px;
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .news-card-list__list {
+    padding: 58px 0 16px;
+    gap: 10px;
+  }
+}

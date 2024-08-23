@@ -179,6 +179,8 @@
   font-size: 26px;
   line-height: 1.15;
   color: #1a1b22;
+  height: 60px;
+  overflow: hidden;
 }
 
 .card__body {
@@ -211,4 +213,80 @@
 
 .card__link {
   text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  .card {
+    max-width: 224px;
+    height: 420px;
+  }
+
+  .card__content {
+    padding: 16px;
+    height: 238px;
+  }
+
+  .card__image {
+    height: 150px;
+  }
+
+  .card__body {
+    width: 192px;
+    height: 88px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    line-height: 1.09;
+    height: 72px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .card__publisher {
+    font-size: 16px;
+    line-height: 1.25;
+    padding-top: 12px;
+  }
+
+  .card__save {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__save:hover .card__delete-button {
+    opacity: 0;
+  }
+
+  .card__keyword {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    margin: 0 auto;
+    max-width: 288px;
+    height: 440px;
+  }
+
+  .card__content {
+    height: 244px;
+  }
+
+  .card__title {
+    height: 48px;
+  }
+
+  .card__publisher {
+    padding-top: 8px;
+  }
+
+  .card__date {
+    padding-bottom: 10px;
+  }
+  .card__image {
+    height: 196px;
+  }
 }

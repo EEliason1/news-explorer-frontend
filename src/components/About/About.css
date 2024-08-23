@@ -61,3 +61,25 @@
     padding-top: 0;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .about {
+    flex-direction: column;
+  }
+
+  .about__image {
+    margin: 40px auto 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about__image {
+    margin: 32px auto 0;
+    height: 272px;
+    width: 272px;
+  }
+
+  .about__content {
+    padding: 24px 16px 128px;
+  }
+}

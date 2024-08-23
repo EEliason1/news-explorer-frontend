@@ -58,3 +58,45 @@
   width: 20px;
   height: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  .footer {
+    height: 64px;
+  }
+
+  .footer__copyright {
+    padding-left: 40px;
+  }
+
+  .footer__icons {
+    padding-right: 40px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    position: relative;
+    height: 176px;
+  }
+
+  .footer__copyright {
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    bottom: 22px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer__links {
+    margin: 20px 0 auto 40px;
+    align-items: start;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .footer__text {
+    flex-direction: column;
+    gap: 26px;
+  }
+}

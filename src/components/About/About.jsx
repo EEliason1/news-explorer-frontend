@@ -8,12 +8,17 @@ function About() {
       <div className="about__content">
         <h2 className="about__title">About the author</h2>
         <p className="about__text">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          My name is Evan Eliason. I am currently a CADD Technician for a land
+          surveying company. Throughout this course I have learned HTML 5, CSS,
+          JS, and various JS packages. I learned how to be a self sufficient
+          Software Engineer and gain extra problem solving skills on top of what
+          I gained in college.
           <br />
           <br />
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          My experience at TripleTen has given me the tools necessary to satisfy
+          almost any SE problem thrown at me. I can use this knowledge to
+          develop websites and apps for customers that will meet and exceed
+          market standards.
         </p>
       </div>
     </div>

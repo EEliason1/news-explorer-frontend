@@ -12,6 +12,7 @@ import Preloader from "../Preloader/Preloader";
 import SignInModal from "../SignInModal/SignInModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import SignUpConfirmModal from "../SignUpConfirmModal/SignUpConfirmModal";
+import MobileNavMenu from "../MobileNavMenu/MobileNavMenu";
 
 import { getArticles } from "../../utils/api";
 import { signin, signup, checktoken } from "../../utils/auth";
@@ -49,6 +50,10 @@ function App() {
     openModal("sign-up");
   };
 
+  const handleHamburgerClick = () => {
+    openModal("hamburger");
+  };
+
   const handleSignIn = (userInfo) => {
     setIsLoading(true);
     signin(userInfo)
@@ -79,6 +84,7 @@ function App() {
   const handleSignOutClick = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    closeActiveModal();
   };
 
   const handleSaveClick = (newsArticle) => {
@@ -162,6 +168,7 @@ function App() {
                     handleSignInClick={handleSignInClick}
                     handleSignOutClick={handleSignOutClick}
                     handleSearchSubmit={handleSearchSubmit}
+                    handleHamburgerClick={handleHamburgerClick}
                   />
                   {isLoading ? (
                     <Preloader />
@@ -189,6 +196,7 @@ function App() {
                     handleSignInClick={handleSignInClick}
                     handleSignOutClick={handleSignOutClick}
                     handleDeleteClick={handleDeleteClick}
+                    handleHamburgerClick={handleHamburgerClick}
                   />
                 </ProtectedRoute>
               }
@@ -213,6 +221,14 @@ function App() {
             isOpen={activeModal === "sign-up-confirm"}
             handleSignInClick={handleSignInClick}
             handleCloseClick={closeActiveModal}
+          />
+          <MobileNavMenu
+            isOpen={activeModal === "hamburger"}
+            handleCloseClick={closeActiveModal}
+            handleSignInClick={handleSignInClick}
+            isLoggedIn={isLoggedIn}
+            handleSignOutClick={handleSignOutClick}
+            closeActiveModal={closeActiveModal}
           />
         </div>
       </div>

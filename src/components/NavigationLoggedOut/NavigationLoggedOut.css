@@ -14,3 +14,14 @@
 .navigation__button_sign-in {
   width: 176px;
 }
+
+@media screen and (max-width: 980px) {
+  .navigation__button {
+    height: 40px;
+    border-radius: 40px;
+  }
+
+  .navigation__button_sign-in {
+    width: 152px;
+  }
+}

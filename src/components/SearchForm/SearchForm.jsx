@@ -17,7 +17,7 @@ function SearchForm({ handleSearchSubmit }) {
         <input
           type="text"
           className="search-form__input"
-          id="keyword"
+          id="q"
           name="q"
           placeholder="Enter topic"
           value={values.q}

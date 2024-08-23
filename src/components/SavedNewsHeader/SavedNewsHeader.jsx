@@ -3,7 +3,12 @@ import Navigation from "../Navigation/Navigation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useEffect } from "react";
 
-function SavedNewsHeader({ isLoggedIn, handleSignOutClick, articles }) {
+function SavedNewsHeader({
+  isLoggedIn,
+  handleSignOutClick,
+  articles,
+  handleHamburgerClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
   const keywords = [];
 
@@ -34,6 +39,7 @@ function SavedNewsHeader({ isLoggedIn, handleSignOutClick, articles }) {
       <Navigation
         isLoggedIn={isLoggedIn}
         handleSignOutClick={handleSignOutClick}
+        handleHamburgerClick={handleHamburgerClick}
       />
       <div className="saved-news-header__content">
         <h2 className="saved-news-header__title">Saved articles</h2>

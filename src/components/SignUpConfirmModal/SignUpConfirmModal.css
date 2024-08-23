@@ -1,5 +1,9 @@
 .modal__confirm-content {
   padding: 43px 79px 51px 36px;
+  background-color: #fff;
+  max-width: calc(430px - 79px - 36px);
+  border-radius: 16px;
+  margin: 0 auto;
 }
 
 .modal__title_confirm {

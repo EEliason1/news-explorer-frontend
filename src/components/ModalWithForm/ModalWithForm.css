@@ -1,8 +1,12 @@
 .modal__form {
   display: flex;
+  background-color: #fff;
+  max-width: 430px;
+  margin: 0 auto;
   flex-direction: column;
   width: calc(100%-72px);
   padding: 34px 36px 28px;
+  border-radius: 20px;
 }
 
 .modal__title {
@@ -23,7 +27,7 @@
   margin: 0 auto;
   padding: 0;
   height: 64px;
-  width: 360px;
+  width: 100%;
   color: #fff;
   background-color: #2f71e5;
 }
@@ -56,4 +60,17 @@
 .modal__submit-button_disabled:hover {
   opacity: 1;
   cursor: default;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 56px;
+    width: calc(100%-32px);
+    padding: 16px;
+    border-radius: 20px 20px 0 0;
+  }
 }

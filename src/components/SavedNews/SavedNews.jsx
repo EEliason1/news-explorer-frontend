@@ -8,6 +8,7 @@ function SavedNews({
   handleSignInClick,
   handleSignOutClick,
   handleDeleteClick,
+  handleHamburgerClick,
 }) {
   return (
     <div className="saved-news">
@@ -16,6 +17,7 @@ function SavedNews({
           isLoggedIn={isLoggedIn}
           handleSignOutClick={handleSignOutClick}
           articles={articles}
+          handleHamburgerClick={handleHamburgerClick}
         />
         <NewsCardList
           articles={articles}

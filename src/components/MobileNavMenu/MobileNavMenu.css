@@ -1,0 +1,91 @@
+.modal__hamburger {
+  background-color: #1a1b22;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  top: -50vh;
+  border-radius: 0 0 20px 20px;
+}
+
+.modal__hamburger-header {
+  display: flex;
+  align-items: center;
+  height: 66px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal__hamburger-close-button {
+  border: none;
+  position: absolute;
+  padding: 0;
+  right: 40px;
+  top: 22.73px;
+  background-image: url("../../assets/close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+}
+
+.modal__hamburger-close-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+.modal__hamburger-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 40px 24px;
+}
+
+.modal__sign-in-hamburger {
+  height: 56px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 56px;
+  margin-top: 22px;
+}
+
+.modal__sign-in-hamburger:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+.modal__hamburger-logged-in {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__sign-out-hamburger {
+  height: 56px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 56px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__sign-out-hamburger:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 500px) {
+  .modal__hamburger-header {
+    height: 56px;
+  }
+
+  .modal__hamburger-nav {
+    padding: 16px 16px 24px;
+  }
+
+  .modal__hamburger-close-button {
+    top: 16px;
+    right: 16px;
+  }
+}
