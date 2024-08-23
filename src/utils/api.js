@@ -1,4 +1,3 @@
-import { prelimArticles } from "./constants";
 import { request } from "./utils";
 
 const baseURL =
@@ -6,7 +5,7 @@ const baseURL =
 
 function getArticles({ q, from, to, pageSize }, apiKey) {
   return request(
-    `https://newsapi.org/v2/everything?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${apiKey}`
+    `https://nomoreparties.co/news/v2/everything?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${apiKey}`
   );
 }
 

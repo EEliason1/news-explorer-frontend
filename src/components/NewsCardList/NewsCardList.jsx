@@ -13,7 +13,7 @@ function NewsCardList({
   return (
     <section className="news-card-list">
       <ul className="news-card-list__list">
-        {articles?.slice(0, visibleResults).map((article) => {
+        {articles.slice(0, visibleResults).map((article) => {
           return (
             <NewsCard
               key={article.publishedAt}
