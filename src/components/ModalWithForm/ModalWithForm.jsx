@@ -11,6 +11,7 @@ function ModalWithForm({
   onSubmit,
   handleModalChange,
   isOpen,
+  isButtonActive,
 }) {
   return (
     <Modal name={name} handleCloseClick={handleCloseClick} isOpen={isOpen}>
@@ -18,7 +19,12 @@ function ModalWithForm({
         <h2 className="modal__title">{titleText}</h2>
         {children}
         <div className="modal__submit-buttons">
-          <button className="modal__submit-button" type="submit">
+          <button
+            className={`modal__submit-button ${
+              !isButtonActive && "modal__submit-button_disabled"
+            }`}
+            type="submit"
+          >
             {buttonText}
           </button>
 

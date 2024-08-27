@@ -33,6 +33,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [articles, setArticles] = useState([]);
   const [savedNews, setSavedNews] = useState([]);
+  const [isButtonActive, setIsButtonActive] = useState(true);
 
   const openModal = (modal) => {
     setActiveModal(modal);
@@ -83,6 +84,7 @@ function App() {
 
   const handleSignOutClick = () => {
     localStorage.removeItem("jwt");
+    setIsActiveSearch(false);
     setIsLoggedIn(false);
     closeActiveModal();
   };
@@ -170,19 +172,16 @@ function App() {
                     handleSearchSubmit={handleSearchSubmit}
                     handleHamburgerClick={handleHamburgerClick}
                   />
-                  {isLoading ? (
-                    <Preloader />
-                  ) : (
-                    <Main
-                      articles={articles}
-                      savedNews={savedNews}
-                      isLoggedIn={isLoggedIn}
-                      isLoading={isLoading}
-                      isActiveSearch={isActiveSearch}
-                      handleSignInClick={handleSignInClick}
-                      handleSaveClick={handleSaveClick}
-                    />
-                  )}
+
+                  <Main
+                    articles={articles}
+                    savedNews={savedNews}
+                    isLoggedIn={isLoggedIn}
+                    isLoading={isLoading}
+                    isActiveSearch={isActiveSearch}
+                    handleSignInClick={handleSignInClick}
+                    handleSaveClick={handleSaveClick}
+                  />
                 </div>
               }
             />
@@ -210,12 +209,14 @@ function App() {
             handleSignUpClick={handleSignUpClick}
             handleCloseClick={closeActiveModal}
             onSignIn={handleSignIn}
+            isButtonActive={isButtonActive}
           />
           <SignUpModal
             isOpen={activeModal === "sign-up"}
             handleSignInClick={handleSignInClick}
             handleCloseClick={closeActiveModal}
             onSignUp={handleSignUp}
+            isButtonActive={isButtonActive}
           />
           <SignUpConfirmModal
             isOpen={activeModal === "sign-up-confirm"}

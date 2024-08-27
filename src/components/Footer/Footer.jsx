@@ -12,22 +12,41 @@ function Footer() {
       </h2>
       <div className="footer__links">
         <div className="footer__text">
-          <Link to="/" className="react__link">
+          <Link to="/" className="navigation__react-link">
             <p className="footer__link footer__link_text">Home</p>
           </Link>
-          <p className="footer__link footer__link_text">TripleTen</p>
+          <a
+            href="https://tripleten.com/"
+            className="navigation__react-link"
+            target="_blank"
+          >
+            <p className="footer__link footer__link_text">TripleTen</p>
+          </a>
         </div>
         <div className="footer__icons">
-          <img
-            src={githubIcon}
-            alt="github icon"
-            className="footer__link footer__link_icon"
-          />
-          <img
-            src={facebookIcon}
-            alt="facebook icon"
-            className="footer__link footer__link_icon"
-          />
+          <a
+            href="https://github.com/EEliason1/"
+            className="navigation__react-link"
+            target="_blank"
+          >
+            <img
+              src={githubIcon}
+              alt="github icon"
+              className="footer__link footer__link_icon"
+            />
+          </a>
+
+          <a
+            href="https://www.facebook.com/tripleten.tech/"
+            className="navigation__react-link"
+            target="_blank"
+          >
+            <img
+              src={facebookIcon}
+              alt="facebook icon"
+              className="footer__link footer__link_icon"
+            />
+          </a>
         </div>
       </div>
     </footer>

@@ -35,14 +35,14 @@ function SavedNewsHeader({
   } `;
 
   return (
-    <section className="saved-news-header">
+    <header className="saved-news-header">
       <Navigation
         isLoggedIn={isLoggedIn}
         handleSignOutClick={handleSignOutClick}
         handleHamburgerClick={handleHamburgerClick}
       />
       <div className="saved-news-header__content">
-        <h2 className="saved-news-header__title">Saved articles</h2>
+        <h1 className="saved-news-header__title">Saved articles</h1>
         <div className="saved-news-header__information">
           <h3 className="saved-news-header__quantity">
             {currentUser.username}, you have {articles.length} saved{" "}
@@ -58,7 +58,7 @@ function SavedNewsHeader({
           </p>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
 

@@ -30,6 +30,10 @@
   width: 100%;
   color: #fff;
   background-color: #2f71e5;
+  font-family: "Roboto-Bold", "sans-serif";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
 }
 
 .modal__submit-button:hover {
@@ -55,6 +59,7 @@
 
 .modal__submit-button_disabled {
   background-color: #e6e8eb;
+  pointer-events: none;
 }
 
 .modal__submit-button_disabled:hover {
@@ -62,15 +67,16 @@
   cursor: default;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 620px) {
   .modal__form {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     top: 56px;
-    width: calc(100%-32px);
+    max-width: calc(620px - 32px);
     padding: 16px;
     border-radius: 20px 20px 0 0;
+    margin: 0;
   }
 }

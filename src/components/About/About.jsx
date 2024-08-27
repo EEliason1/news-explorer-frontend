@@ -13,8 +13,8 @@ function About() {
           JS, and various JS packages. I learned how to be a self sufficient
           Software Engineer and gain extra problem solving skills on top of what
           I gained in college.
-          <br />
-          <br />
+        </p>
+        <p className="about__text">
           My experience at TripleTen has given me the tools necessary to satisfy
           almost any SE problem thrown at me. I can use this knowledge to
           develop websites and apps for customers that will meet and exceed

@@ -9,6 +9,7 @@ function SignUpModal({
   onSignUp,
   handleSignInClick,
   isLoading,
+  isButtonActive
 }) {
   const { values, handleChange, setValues } = useForm({
     email: "",
@@ -37,6 +38,7 @@ function SignUpModal({
       handleModalChange={handleSignInClick}
       handleCloseClick={handleCloseClick}
       onSubmit={handleFormSubmit}
+      isButtonActive={isButtonActive}
     >
       <label htmlFor="new-email" className="modal__label">
         Email

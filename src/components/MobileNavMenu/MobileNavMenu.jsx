@@ -20,11 +20,6 @@ function MobileNavMenu({
       <div
         className="modal__hamburger"
       >
-        <button
-          className="modal__hamburger-close-button"
-          type="button"
-          onClick={handleCloseClick}
-        />
         <div className="modal__hamburger-header">
           <Link to="/" className="react__link">
             <div className="navigation__title">NewsExplorer</div>

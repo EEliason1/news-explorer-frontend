@@ -39,6 +39,12 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  max-width: 430px;
+}
+
+.modal__content.hamburger {
+  top: -40vh;
+  height: 100px;
 }
 
 .modal__close-button {
@@ -58,4 +64,17 @@
 .modal__close-button:hover {
   cursor: url("../../assets/custom-cursor.svg"), pointer;
   opacity: 0.6;
+}
+
+@media screen and (max-width: 620px) {
+  .modal__close-button {
+    right: 16px;
+    top: -46px;
+  }
+
+  .modal__content {
+    height: calc(100% - 56px);
+    top: 28px;
+    max-width: 100%;
+  }
 }

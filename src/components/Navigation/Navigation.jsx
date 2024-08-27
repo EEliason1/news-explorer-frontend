@@ -13,7 +13,7 @@ function Navigation({
 
   return (
     <div className={`navigation ${pathname === "/saved-news" && "saved-news"}`}>
-      <Link to="/" className="react__link">
+      <Link to="/" className="navigation__react-link">
         <div
           className={`navigation__title ${
             pathname === "/saved-news" && "saved-news"
@@ -30,7 +30,7 @@ function Navigation({
         onClick={handleHamburgerClick}
       ></button>
       <div className="navigation__links">
-        <Link to="/" className="react__link">
+        <Link to="/" className="navigation__react-link">
           <button
             className={`navigation__link ${
               pathname === "/" ? "home" : "saved-news"

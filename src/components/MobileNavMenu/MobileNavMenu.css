@@ -3,7 +3,7 @@
   color: #fff;
   position: absolute;
   width: 100%;
-  top: -50vh;
+  top: -56px;
   border-radius: 0 0 20px 20px;
 }
 
@@ -12,20 +12,6 @@
   align-items: center;
   height: 66px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.modal__hamburger-close-button {
-  border: none;
-  position: absolute;
-  padding: 0;
-  right: 40px;
-  top: 22.73px;
-  background-image: url("../../assets/close.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 24px;
-  width: 24px;
-  background-color: transparent;
 }
 
 .modal__hamburger-close-button:hover {
