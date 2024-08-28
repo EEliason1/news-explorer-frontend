@@ -1,0 +1,82 @@
+.modal__form {
+  display: flex;
+  background-color: #fff;
+  max-width: 430px;
+  margin: 0 auto;
+  flex-direction: column;
+  width: calc(100%-72px);
+  padding: 34px 36px 28px;
+  border-radius: 20px;
+}
+
+.modal__title {
+  font-family: "Roboto-Black", "sans-serif";
+  font-size: 24px;
+  line-height: 1.17;
+  margin: 0 0 22px;
+}
+
+.modal__submit-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__submit-button {
+  border: none;
+  border-radius: 64px;
+  margin: 0 auto;
+  padding: 0;
+  height: 64px;
+  width: 100%;
+  color: #fff;
+  background-color: #2f71e5;
+  font-family: "Roboto-Bold", "sans-serif";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.modal__submit-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+.modal__alternate-button {
+  background-color: transparent;
+  border: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.modal__alternate-text {
+  color: #2f71e5;
+}
+
+.modal__alternate-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
+
+.modal__submit-button_disabled {
+  background-color: #e6e8eb;
+  pointer-events: none;
+}
+
+.modal__submit-button_disabled:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+@media screen and (max-width: 620px) {
+  .modal__form {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 56px;
+    max-width: calc(620px - 32px);
+    padding: 16px;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,125 @@
+.main {
+}
+
+.main__searching {
+  margin: 0 auto;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.main__search-text {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Roboto-Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #b6bcbf;
+}
+
+.main__content {
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.main__title {
+  margin: 0 auto 0 0;
+  padding: 80px 0 0 104px;
+  font-family: "Roboto-Slab-Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+}
+
+.main__show-more-button {
+  margin: 64px auto 0;
+  border: none;
+  background-color: #fff;
+  color: #1a1b22;
+  font-family: "Roboto-Bold", "sans-serif";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  height: 64px;
+  width: 288px;
+  border-radius: 64px;
+}
+
+.main__show-more-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  background-color: #e8e8e8;
+}
+
+.main__nothing-found {
+  display: flex;
+  margin: 0 auto;
+  padding: 86px 0 80px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__nothing-image {
+  background-image: url("../../assets/not-found_v1.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 82.5px;
+  width: 82.5px;
+}
+
+.main__nothing-title {
+  margin: 0 auto;
+  padding: 31.5px 0 16px;
+  font-family: "Roboto-Slab-Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15;
+  color: #1a1b22;
+}
+
+.main__nothing-text {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Roboto-Regular", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #b6bcbf;
+  max-width: 300px;
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .main__content {
+    padding-bottom: 40px;
+  }
+
+  .main__title {
+    font-size: 30px;
+    line-height: 1.13;
+    padding: 40px 0 0 40px;
+  }
+
+  .main__show-more-button {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main__content {
+    padding-bottom: 24px;
+  }
+
+  .main__title {
+    font-size: 30px;
+    line-height: 1.13;
+    width: 288px;
+    padding: 0;
+    margin: 32px auto 0;
+  }
+}

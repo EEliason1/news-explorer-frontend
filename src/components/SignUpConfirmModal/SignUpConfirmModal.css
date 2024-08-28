@@ -1,0 +1,26 @@
+.modal__confirm-content {
+  padding: 43px 79px 51px 36px;
+  background-color: #fff;
+  max-width: calc(430px - 79px - 36px);
+  border-radius: 16px;
+  margin: 0 auto;
+}
+
+.modal__title_confirm {
+  margin-bottom: 14px;
+}
+
+.modal__sign-in-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: #2f71e5;
+  font-family: "Inter-Regular", "sans-serif";
+  font-size: 18px;
+  line-height: 1.21;
+}
+
+.modal__sign-in-button:hover {
+  cursor: url("../../assets/custom-cursor.svg"), pointer;
+  opacity: 0.6;
+}
